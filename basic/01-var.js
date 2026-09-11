@@ -1,19 +1,36 @@
 // basic demonstration of the difference between var and let scope by declaring variables with the same name in the global scope, inside a function, and inside a block. Print the value accessible at each scope.
 
-var x = 10;
+var name = "Global Var";
+let age = 20;
 
-function test() {
-    console.log(x);
+console.log("Global:");
+console.log("name =", name);
+console.log("age =", age);
 
-    var x = 20;
+function testScope() {
+    var name = "Function Var";
+    let age = 25;
 
-    if (true) {
-        let x = 30;
-        console.log(x);
+    console.log("\nInside Function:");
+    console.log("name =", name);
+    console.log("age =", age);
+
+    {
+        var name = "Block Var";
+        let age = 30;
+
+        console.log("\nInside Block:");
+        console.log("name =", name);
+        console.log("age =", age);
     }
 
-    console.log(x);
+    console.log("\nAfter Block:");
+    console.log("name =", name);
+    console.log("age =", age);
 }
 
-test();
-console.log(x);
+testScope();
+
+console.log("\nGlobal Again:");
+console.log("name =", name);
+console.log("age =", age);
